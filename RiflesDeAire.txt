@@ -1,0 +1,102 @@
+# Calculadora de Registro de Rifles de Aire PCP - México
+# Ley que regula rifles con potencia mayor a 140 joules
+
+import math
+
+def calcular_energia_cinetica(masa_granos, velocidad_fps):
+    """
+    Calcula la energía cinética en joules
+    masa_granos: peso del proyectil en granos
+    velocidad_fps: velocidad en pies por segundo
+    """
+    # Conversiones
+    masa_kg = masa_granos * 0.0000647989  # granos a kilogramos
+    velocidad_ms = velocidad_fps * 0.3048  # fps a m/s
+    
+    # Energía cinética: E = (1/2) * m * v²
+    energia_joules = 0.5 * masa_kg * (velocidad_ms ** 2)
+    return energia_joules
+
+def requiere_registro(energia_joules):
+    """Determina si el rifle requiere registro según la ley mexicana"""
+    return energia_joules > 140
+
+def evaluar_rifle():
+    print("=== CALCULADORA DE REGISTRO DE RIFLES PCP - MÉXICO ===")
+    print("Límite legal: 140 joules")
+    print()
+    
+    # Datos típicos de proyectiles por calibre
+    calibres_datos = {
+        "4.5": {"peso_promedio": 8.2, "descripcion": ".177 cal"},
+        "5.0": {"peso_promedio": 12.0, "descripcion": ".20 cal"},
+        "5.5": {"peso_promedio": 14.3, "descripcion": ".22 cal"},
+        "6.35": {"peso_promedio": 25.4, "descripcion": ".25 cal"}
+    }
+    
+    print("Calibres disponibles:")
+    for cal, datos in calibres_datos.items():
+        print(f"  {cal}mm ({datos['descripcion']}) - Peso promedio: {datos['peso_promedio']} granos")
+    
+    try:
+        # Entrada de datos
+        calibre = input("\nIngrese el calibre (4.5, 5.0, 5.5, 6.35): ")
+        
+        if calibre not in calibres_datos:
+            print("Calibre no válido")
+            return
+        
+        velocidad = float(input("Ingrese la velocidad en fps: "))
+        
+        # Usar peso promedio del calibre
+        peso_granos = calibres_datos[calibre]["peso_promedio"]
+        
+        # Calcular energía
+        energia = calcular_energia_cinetica(peso_granos, velocidad)
+        
+        # Mostrar resultados
+        print(f"\n=== RESULTADOS ===")
+        print(f"Calibre: {calibre}mm ({calibres_datos[calibre]['descripcion']})")
+        print(f"Peso del proyectil: {peso_granos} granos")
+        print(f"Velocidad: {velocidad} fps")
+        print(f"Energía calculada: {energia:.2f} joules")
+        print(f"Límite legal: 140 joules")
+        
+        if requiere_registro(energia):
+            print(f"\n⚠️  REQUIERE REGISTRO")
+            print(f"Excede el límite por {energia - 140:.2f} joules")
+        else:
+            print(f"\n✅ NO REQUIERE REGISTRO")
+            print(f"Está {140 - energia:.2f} joules por debajo del límite")
+            
+    except ValueError:
+        print("Error: Ingrese valores numéricos válidos")
+
+def tabla_referencia():
+    """Genera tabla de referencia para diferentes combinaciones"""
+    print("\n=== TABLA DE REFERENCIA ===")
+    print("Velocidades típicas que requieren registro (>140J):")
+    
+    calibres = {
+        "4.5": 8.2,
+        "5.5": 14.3,
+        "6.35": 25.4
+    }
+    
+    for calibre, peso in calibres.items():
+        # Calcular velocidad mínima para 140J
+        # 140 = 0.5 * masa_kg * v²
+        masa_kg = peso * 0.0000647989
+        v_ms_limite = math.sqrt(2 * 140 / masa_kg)
+        v_fps_limite = v_ms_limite / 0.3048
+        
+        print(f"\nCalibre {calibre}mm:")
+        print(f"  Velocidad límite: {v_fps_limite:.0f} fps")
+        print(f"  Requiere registro si excede: {v_fps_limite:.0f} fps")
+
+if __name__ == "__main__":
+    evaluar_rifle()
+    
+    continuar = input("\n¿Mostrar tabla de referencia? (s/n): ")
+    if continuar.lower() == 's':
+        tabla_referencia()

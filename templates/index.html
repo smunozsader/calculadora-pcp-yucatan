@@ -37,6 +37,51 @@
             gap: 20px;
         }
         
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* LANGUAGE TOGGLE */
+        .language-toggle {
+            margin-left: auto;
+        }
+        
+        .lang-button {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            padding: 8px 16px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lang-button:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        .lang-option {
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+        
+        .lang-option.active {
+            opacity: 1;
+            color: #20c997;
+            text-shadow: 0 0 10px rgba(32, 201, 151, 0.5);
+        }
+        
+        .lang-separator {
+            margin: 0 8px;
+            opacity: 0.4;
+        }
+        
         .club-logo {
             width: 90px;
             height: 90px;
@@ -545,8 +590,15 @@
                     <img src="{{ url_for('static', filename='logo-club.jpg') }}" alt="Logo Club de Caza, Tiro y Pesca de Yucatán" class="logo-img">
                 </div>
                 <div class="club-info">
-                    <h1>Club de Caza, Tiro y Pesca de Yucatán, AC</h1>
-                    <p class="club-subtitle">Tiro Deportivo y Caza Responsable - Calculadora PCP</p>
+                    <h1 data-es="Club de Caza, Tiro y Pesca de Yucatán, AC" data-en="Hunting, Shooting and Fishing Club of Yucatán, AC">Club de Caza, Tiro y Pesca de Yucatán, AC</h1>
+                    <p class="club-subtitle" data-es="Tiro Deportivo y Caza Responsable - Calculadora PCP" data-en="Sport Shooting and Responsible Hunting - PCP Calculator">Tiro Deportivo y Caza Responsable - Calculadora PCP</p>
+                </div>
+                <div class="language-toggle">
+                    <button id="lang-toggle" class="lang-button">
+                        <span id="lang-es" class="lang-option active">ES</span>
+                        <span class="lang-separator">|</span>
+                        <span id="lang-en" class="lang-option">EN</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -556,59 +608,59 @@
         <!-- HERO SECTION - INSTRUCTIVO Y CALCULADORA -->
         <div class="hero-section">
             <div class="instructivo">
-                <h2>🎯 ¿Eres deportista de tiro neumático? ¿Quieres saber si debes registrar tu rifle ante SEDENA?</h2>
-                <p class="instructivo-principal">
-                    <strong>Utiliza nuestra calculadora para conocer como debes proceder</strong>
+                <h2 data-es="🎯 ¿Eres deportista de tiro neumático? ¿Quieres saber si debes registrar tu rifle ante SEDENA?" data-en="🎯 Are you an airgun sport shooter? Do you want to know if you need to register your rifle with SEDENA?">🎯 ¿Eres deportista de tiro neumático? ¿Quieres saber si debes registrar tu rifle ante SEDENA?</h2>
+                <p class="instructivo-principal" data-es="Utiliza nuestra calculadora para conocer como debes proceder" data-en="Use our calculator to know how you should proceed">
+                    <strong data-es="Utiliza nuestra calculadora para conocer como debes proceder" data-en="Use our calculator to know how you should proceed">Utiliza nuestra calculadora para conocer como debes proceder</strong>
                 </p>
                 
                 <div class="pasos-instructivo">
                     <div class="paso">
                         <div class="paso-numero">1️⃣</div>
                         <div class="paso-contenido">
-                            <h4>Captura el peso de tu "pellet" o "diábolo"</h4>
-                            <p>Busca en la caja de munición o pesa tu proyectil. Se mide en <strong>granos</strong>.</p>
+                            <h4 data-es="Captura el peso de tu \"pellet\" o \"diábolo\"" data-en="Enter the weight of your \"pellet\" or \"diabolo\"">Captura el peso de tu "pellet" o "diábolo"</h4>
+                            <p data-es="Busca en la caja de munición o pesa tu proyectil. Se mide en granos." data-en="Check the ammunition box or weigh your projectile. It's measured in grains.">Busca en la caja de munición o pesa tu proyectil. Se mide en <strong>granos</strong>.</p>
                         </div>
                     </div>
                     
                     <div class="paso">
                         <div class="paso-numero">2️⃣</div>
                         <div class="paso-contenido">
-                            <h4>Ingresa la velocidad de tu rifle</h4>
-                            <p>Usa un cronógrafo o consulta las especificaciones del fabricante. Se mide en <strong>fps</strong> (pies por segundo).</p>
+                            <h4 data-es="Ingresa la velocidad de tu rifle" data-en="Enter your rifle's velocity">Ingresa la velocidad de tu rifle</h4>
+                            <p data-es="Usa un cronógrafo o consulta las especificaciones del fabricante. Se mide en fps (pies por segundo)." data-en="Use a chronograph or check manufacturer specifications. It's measured in fps (feet per second).">Usa un cronógrafo o consulta las especificaciones del fabricante. Se mide en <strong>fps</strong> (pies por segundo).</p>
                         </div>
                     </div>
                     
                     <div class="paso">
                         <div class="paso-numero">3️⃣</div>
                         <div class="paso-contenido">
-                            <h4>Conoce la potencia que desarrolla tu rifle</h4>
-                            <p>La calculadora te mostrará los <strong>joules de energía</strong> y si cumples con la normativa legal.</p>
+                            <h4 data-es="Conoce la potencia que desarrolla tu rifle" data-en="Know the power your rifle develops">Conoce la potencia que desarrolla tu rifle</h4>
+                            <p data-es="La calculadora te mostrará los joules de energía y si cumples con la normativa legal." data-en="The calculator will show you the energy joules and if you comply with legal regulations.">La calculadora te mostrará los <strong>joules de energía</strong> y si cumples con la normativa legal.</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="tip-importante">
-                    <strong>💡 TIP:</strong> Puedes usar nuestro preclasificador por calibres para obtener valores típicos automáticamente.
+                    <strong data-es="💡 TIP:" data-en="💡 TIP:">💡 TIP:</strong> <span data-es="Puedes usar nuestro preclasificador por calibres para obtener valores típicos automáticamente." data-en="You can use our caliber pre-classifier to get typical values automatically.">Puedes usar nuestro preclasificador por calibres para obtener valores típicos automáticamente.</span>
                 </div>
             </div>
             
             <!-- CALCULADORA PRINCIPAL -->
             <div class="calculadora-hero">
-                <h3>⚡ Calculadora de Energía Cinética</h3>
+                <h3 data-es="⚡ Calculadora de Energía Cinética" data-en="⚡ Kinetic Energy Calculator">⚡ Calculadora de Energía Cinética</h3>
                 <form id="calculadora-form">
                     <div class="form-group">
-                        <label for="peso">Peso del proyectil (granos):</label>
-                        <input type="number" id="peso" step="0.1" min="0" placeholder="Ej: 14.3" required>
+                        <label for="peso" data-es="Peso del proyectil (granos):" data-en="Projectile weight (grains):">Peso del proyectil (granos):</label>
+                        <input type="number" id="peso" step="0.1" min="0" placeholder="Ej: 14.3" data-placeholder-es="Ej: 14.3" data-placeholder-en="Ex: 14.3" required>
                         <div class="input-helper" id="peso-helper"></div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="velocidad">Velocidad (fps):</label>
-                        <input type="number" id="velocidad" step="0.1" min="0" placeholder="Ej: 850" required>
+                        <label for="velocidad" data-es="Velocidad (fps):" data-en="Velocity (fps):">Velocidad (fps):</label>
+                        <input type="number" id="velocidad" step="0.1" min="0" placeholder="Ej: 850" data-placeholder-es="Ej: 850" data-placeholder-en="Ex: 850" required>
                         <div class="input-helper" id="velocidad-helper"></div>
                     </div>
                     
-                    <button type="submit">🎯 Calcular como Proceder</button>
+                    <button type="submit" data-es="🎯 Calcular como Proceder" data-en="🎯 Calculate How to Proceed">🎯 Calcular como Proceder</button>
                 </form>
 
                 <div id="error-message" class="error"></div>
@@ -618,90 +670,84 @@
 
         <!-- PRECLASIFICADOR POR CALIBRES -->
         <div class="preclasificador">
-            <h3>🎯 Preclasificador por Calibres de Rifles de Aire</h3>
-            <p>Selecciona tu calibre para obtener valores típicos automáticamente. ¡Haz clic en cualquier tarjeta!</p>
+            <h3 data-es="🎯 Preclasificador por Calibres de Rifles de Aire" data-en="🎯 Airgun Caliber Pre-classifier">🎯 Preclasificador por Calibres de Rifles de Aire</h3>
+            <p data-es="Selecciona tu calibre para obtener valores típicos automáticamente. ¡Haz clic en cualquier tarjeta!" data-en="Select your caliber to get typical values automatically. Click on any card!">Selecciona tu calibre para obtener valores típicos automáticamente. ¡Haz clic en cualquier tarjeta!</p>
             
             <!-- CALIBRES PEQUEÑOS -->
             <div class="categoria-titulo">
-                <h4>🎯 Calibres Pequeños - Tiro Deportivo & Precisión</h4>
-                <small>Alta velocidad, trayectoria plana, ideales para competencias y entrenamiento</small>
+                <h4 data-es="🎯 Calibres Pequeños - Tiro Deportivo & Precisión" data-en="🎯 Small Calibers - Sport Shooting & Precision">🎯 Calibres Pequeños - Tiro Deportivo & Precisión</h4>
+                <small data-es="Alta velocidad, trayectoria plana, ideales para competencias y entrenamiento" data-en="High velocity, flat trajectory, ideal for competitions and training">Alta velocidad, trayectoria plana, ideales para competencias y entrenamiento</small>
             </div>
             <div class="calibres-grid">
-                <div class="calibre-card" onclick="seleccionarCalibre(4.5, 8.2, '.177 (4.5mm)', 'Tiro deportivo de precisión y competencias olímpicas')">
-                    <div class="calibre-nombre">.177 (4.5mm)</div>
-                    <div class="calibre-peso">8.2 gr típicos</div>
-                    <div class="calibre-limite">Max: ~975 fps</div>
-                    <div class="calibre-uso">🏅 Competencia</div>
+                <div class="calibre-card" onclick="seleccionarCalibre(4.5, 8.4, '0.177&quot; Cal. (4.5mm)', 'Tiro deportivo de precisión y competencias olímpicas')">
+                    <div class="calibre-nombre">0.177" Cal. (4.5mm)</div>
+                    <div class="calibre-peso" data-es="8.4 gr típicos" data-en="8.4 gr typical">8.4 gr típicos</div>
+                    <div class="calibre-limite" data-es="Max: ~975 fps" data-en="Max: ~975 fps">Max: ~975 fps</div>
+                    <div class="calibre-uso" data-es="🏅 Competencia" data-en="🏅 Competition">🏅 Competencia</div>
                 </div>
                 
-                <div class="calibre-card" onclick="seleccionarCalibre(5.0, 12.0, '.20 (5.0mm)', 'Tiro deportivo de precisión, excelente equilibrio')">
-                    <div class="calibre-nombre">.20 (5.0mm)</div>
-                    <div class="calibre-peso">12.0 gr típicos</div>
-                    <div class="calibre-limite">Max: ~794 fps</div>
-                    <div class="calibre-uso">🎯 Precisión</div>
+                <div class="calibre-card" onclick="seleccionarCalibre(5.0, 11.4, '0.20&quot; Cal. (5.0mm)', 'Tiro deportivo de precisión, excelente equilibrio')">
+                    <div class="calibre-nombre">0.20" Cal. (5.0mm)</div>
+                    <div class="calibre-peso" data-es="11.4 gr típicos" data-en="11.4 gr typical">11.4 gr típicos</div>
+                    <div class="calibre-limite" data-es="Max: ~794 fps" data-en="Max: ~794 fps">Max: ~794 fps</div>
+                    <div class="calibre-uso" data-es="🎯 Precisión" data-en="🎯 Precision">🎯 Precisión</div>
                 </div>
                 
-                <div class="calibre-card" onclick="seleccionarCalibre(5.5, 14.3, '.22 (5.5mm)', 'Caza responsable de especies menores, muy versátil')">
-                    <div class="calibre-nombre">.22 (5.5mm)</div>
-                    <div class="calibre-peso">14.3 gr típicos</div>
-                    <div class="calibre-limite">Max: ~728 fps</div>
-                    <div class="calibre-uso">🏹 Caza Ética</div>
+                <div class="calibre-card" onclick="seleccionarCalibre(5.5, 14.3, '0.22&quot; Cal. (5.5mm)', 'Caza responsable de especies menores, muy versátil')">
+                    <div class="calibre-nombre">0.22" Cal. (5.5mm)</div>
+                    <div class="calibre-peso" data-es="14.3 gr típicos" data-en="14.3 gr typical">14.3 gr típicos</div>
+                    <div class="calibre-limite" data-es="Max: ~728 fps" data-en="Max: ~728 fps">Max: ~728 fps</div>
+                    <div class="calibre-uso" data-es="🏹 Caza Ética" data-en="🏹 Ethical Hunt">🏹 Caza Ética</div>
                 </div>
-                
-                <div class="calibre-card" onclick="seleccionarCalibre(5.6, 15.0, '.22 (5.6mm)', 'Variante .22 con proyectiles ligeramente más pesados')">
-                    <div class="calibre-nombre">.22 (5.6mm)</div>
-                    <div class="calibre-peso">15.0 gr típicos</div>
-                    <div class="calibre-limite">Max: ~707 fps</div>
-                    <div class="calibre-uso">🐿️ Caza Menor</div>
-                </div>
+
             </div>
 
             <!-- CALIBRES MEDIANOS -->
             <div class="categoria-titulo">
-                <h4>🏹 Calibres Medianos - Caza Responsable & Tiro a Distancia</h4>
-                <small>Mayor energía de impacto, excelentes para caza ética y tiro de precisión</small>
+                <h4 data-es="🏹 Calibres Medianos - Caza Responsable & Tiro a Distancia" data-en="🏹 Medium Calibers - Responsible Hunting & Long Range Shooting">🏹 Calibres Medianos - Caza Responsable & Tiro a Distancia</h4>
+                <small data-es="Mayor energía de impacto, excelentes para caza ética y tiro de precisión" data-en="Higher impact energy, excellent for ethical hunting and precision shooting">Mayor energía de impacto, excelentes para caza ética y tiro de precisión</small>
             </div>
             <div class="calibres-grid">
-                <div class="calibre-card" onclick="seleccionarCalibre(6.35, 25.4, '.25 (6.35mm)', 'Excelente para caza mediana, más potencia que .22')">
-                    <div class="calibre-nombre">.25 (6.35mm)</div>
-                    <div class="calibre-peso">25.4 gr típicos</div>
-                    <div class="calibre-limite">Max: ~547 fps</div>
-                    <div class="calibre-uso">🐰 Caza Mediana</div>
+                <div class="calibre-card" onclick="seleccionarCalibre(6.35, 25.4, '0.25&quot; Cal. (6.35mm)', 'Excelente para caza mediana, más potencia que .22')">
+                    <div class="calibre-nombre">0.25" Cal. (6.35mm)</div>
+                    <div class="calibre-peso" data-es="25.4 gr típicos" data-en="25.4 gr typical">25.4 gr típicos</div>
+                    <div class="calibre-limite" data-es="Max: ~547 fps" data-en="Max: ~547 fps">Max: ~547 fps</div>
+                    <div class="calibre-uso" data-es="🐰 Caza Mediana" data-en="🐰 Medium Game">🐰 Caza Mediana</div>
                 </div>
                 
-                <div class="calibre-card" onclick="seleccionarCalibre(7.62, 44.8, '.30 (7.62mm)', 'Potente para caza mayor, excelente precisión')">
-                    <div class="calibre-nombre">.30 (7.62mm)</div>
-                    <div class="calibre-peso">44.8 gr típicos</div>
-                    <div class="calibre-limite">Max: ~409 fps</div>
-                    <div class="calibre-uso">🦌 Caza Mayor</div>
+                <div class="calibre-card" onclick="seleccionarCalibre(7.62, 44.8, '0.30&quot; Cal. (7.62mm)', 'Potente para caza mayor, excelente precisión')">
+                    <div class="calibre-nombre">0.30" Cal. (7.62mm)</div>
+                    <div class="calibre-peso" data-es="44.8 gr típicos" data-en="44.8 gr typical">44.8 gr típicos</div>
+                    <div class="calibre-limite" data-es="Max: ~409 fps" data-en="Max: ~409 fps">Max: ~409 fps</div>
+                    <div class="calibre-uso" data-es="🦌 Caza Mayor" data-en="🦌 Big Game">🦌 Caza Mayor</div>
                 </div>
             </div>
 
             <!-- CALIBRES GRANDES -->
             <div class="categoria-titulo">
-                <h4>🦌 Calibres Grandes - Caza Mayor Responsable (PCP Potentes)</h4>
-                <small>Alta energía para caza ética de especies mayores, requiere licencia</small>
+                <h4 data-es="🦌 Calibres Grandes - Caza Mayor Responsable (PCP Potentes)" data-en="🦌 Large Calibers - Responsible Big Game Hunting (Powerful PCP)">🦌 Calibres Grandes - Caza Mayor Responsable (PCP Potentes)</h4>
+                <small data-es="Alta energía para caza ética de especies mayores, requiere licencia" data-en="High energy for ethical hunting of larger species, requires license">Alta energía para caza ética de especies mayores, requiere licencia</small>
             </div>
             <div class="calibres-grid">
-                <div class="calibre-card" onclick="seleccionarCalibre(9.07, 81.0, '.357 (9.07mm)', 'Calibre potente para caza mayor y jabalíes')">
-                    <div class="calibre-nombre">.357 (9.07mm)</div>
-                    <div class="calibre-peso">81.0 gr típicos</div>
-                    <div class="calibre-limite">Max: ~304 fps</div>
-                    <div class="calibre-uso">🐗 Jabalíes</div>
+                <div class="calibre-card" onclick="seleccionarCalibre(9.07, 81.0, '0.357&quot; Cal. (9.07mm)', 'Calibre potente para caza mayor y jabalíes')">
+                    <div class="calibre-nombre">0.357" Cal. (9.07mm)</div>
+                    <div class="calibre-peso" data-es="81.0 gr típicos" data-en="81.0 gr typical">81.0 gr típicos</div>
+                    <div class="calibre-limite" data-es="Max: ~304 fps" data-en="Max: ~304 fps">Max: ~304 fps</div>
+                    <div class="calibre-uso" data-es="🐗 Jabalíes" data-en="🐗 Wild Boar">🐗 Jabalíes</div>
                 </div>
                 
-                <div class="calibre-card" onclick="seleccionarCalibre(11.43, 143.0, '.45 (11.43mm)', 'Máxima potencia para caza mayor')">
-                    <div class="calibre-nombre">.45 (11.43mm)</div>
-                    <div class="calibre-peso">143.0 gr típicos</div>
-                    <div class="calibre-limite">Max: ~230 fps</div>
-                    <div class="calibre-uso">🦌 Venados</div>
+                <div class="calibre-card" onclick="seleccionarCalibre(11.43, 140.0, '0.45&quot; Cal. (11.43mm)', 'Máxima potencia para caza mayor')">
+                    <div class="calibre-nombre">0.45" Cal. (11.43mm)</div>
+                    <div class="calibre-peso" data-es="140.0 gr típicos" data-en="140.0 gr typical">140.0 gr típicos</div>
+                    <div class="calibre-limite" data-es="Max: ~230 fps" data-en="Max: ~230 fps">Max: ~230 fps</div>
+                    <div class="calibre-uso" data-es="🦌 Venados" data-en="🦌 Deer">🦌 Venados</div>
                 </div>
                 
-                <div class="calibre-card" onclick="seleccionarCalibre(12.7, 178.0, '.50 (12.7mm)', 'El más potente para caza mayor extrema')">
-                    <div class="calibre-nombre">.50 (12.7mm)</div>
-                    <div class="calibre-peso">178.0 gr típicos</div>
-                    <div class="calibre-limite">Max: ~206 fps</div>
-                    <div class="calibre-uso">🦬 Caza Extrema</div>
+                <div class="calibre-card" onclick="seleccionarCalibre(12.7, 200.0, '0.50&quot; Cal. (12.7mm)', 'El más potente para caza mayor extrema')">
+                    <div class="calibre-nombre">0.50" Cal. (12.7mm)</div>
+                    <div class="calibre-peso" data-es="200.0 gr típicos" data-en="200.0 gr typical">200.0 gr típicos</div>
+                    <div class="calibre-limite" data-es="Max: ~206 fps" data-en="Max: ~206 fps">Max: ~206 fps</div>
+                    <div class="calibre-uso" data-es="🦬 Caza Extrema" data-en="🦬 Extreme Hunt">🦬 Caza Extrema</div>
                 </div>
             </div>
             
@@ -711,22 +757,49 @@
             </div>
         </div>
 
-        <button onclick="mostrarTablaReferencia()" style="background-color: #2196F3; margin-top: 20px; width: 100%; padding: 12px; border: none; border-radius: 8px; color: white; font-size: 16px; cursor: pointer;">
+        <button onclick="mostrarTablaReferencia()" style="background-color: #2196F3; margin-top: 20px; width: 100%; padding: 12px; border: none; border-radius: 8px; color: white; font-size: 16px; cursor: pointer;" data-es="Ver Tabla de Referencia" data-en="View Reference Table">
             Ver Tabla de Referencia
         </button>
 
         <div id="tabla-container" style="display: none;">
-            <h3>Velocidades Límite por Calibre (140J)</h3>
+            <h3 data-es="Velocidades Límite por Calibre (140J)" data-en="Velocity Limits by Caliber (140J)">Velocidades Límite por Calibre (140J)</h3>
             <table id="tabla-referencia" class="tabla-referencia">
                 <thead>
                     <tr>
-                        <th>Calibre</th>
-                        <th>Peso típico (granos)</th>
-                        <th>Velocidad límite (fps)</th>
+                        <th data-es="Calibre" data-en="Caliber">Calibre</th>
+                        <th data-es="Peso típico (granos)" data-en="Typical weight (grains)">Peso típico (granos)</th>
+                        <th data-es="Velocidad límite (fps)" data-en="Velocity limit (fps)">Velocidad límite (fps)</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
+        </div>
+        
+        <!-- FUENTES DE INFORMACIÓN -->
+        <div style="margin-top: 40px; padding: 25px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; border-left: 4px solid #28a745;">
+            <h3 style="color: #155724; text-align: center; margin-bottom: 20px; font-size: 20px;" data-es="📚 Fuentes de Información Verificadas" data-en="📚 Verified Information Sources">📚 Fuentes de Información Verificadas</h3>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;" data-es="Los datos técnicos de esta calculadora están basados en fuentes confiables de la industria del tiro deportivo:" data-en="The technical data in this calculator is based on reliable sources from the sport shooting industry:">Los datos técnicos de esta calculadora están basados en fuentes confiables de la industria del tiro deportivo:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #007bff;">
+                    <h4 style="color: #007bff; margin-bottom: 10px;" data-es="🎯 JSB Match Diabolo" data-en="🎯 JSB Match Diabolo">🎯 JSB Match Diabolo</h4>
+                    <p style="font-size: 14px; color: #666; margin: 0;" data-es="Fabricante líder mundial de pellets de competencia. Pesos de referencia basados en especificaciones técnicas oficiales de pellets JSB Exact, Heavy y King series." data-en="World leading manufacturer of competition pellets. Reference weights based on official technical specifications of JSB Exact, Heavy and King series pellets.">Fabricante líder mundial de pellets de competencia. Pesos de referencia basados en especificaciones técnicas oficiales de pellets JSB Exact, Heavy y King series.</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #28a745;">
+                    <h4 style="color: #28a745; margin-bottom: 10px;" data-es="⚖️ LFAFE - Marco Legal" data-en="⚖️ LFAFE - Legal Framework">⚖️ LFAFE - Marco Legal</h4>
+                    <p style="font-size: 14px; color: #666; margin: 0;" data-es="Ley Federal de Armas de Fuego y Explosivos, Artículo 16. Límite oficial de 140 joules establecido por SEDENA para rifles de aire de uso libre." data-en="Federal Law of Firearms and Explosives, Article 16. Official 140 joules limit established by SEDENA for free-use airguns.">Ley Federal de Armas de Fuego y Explosivos, Artículo 16. Límite oficial de 140 joules establecido por SEDENA para rifles de aire de uso libre.</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #dc3545;">
+                    <h4 style="color: #dc3545; margin-bottom: 10px;" data-es="🏆 FEMETI" data-en="🏆 FEMETI">🏆 FEMETI</h4>
+                    <p style="font-size: 14px; color: #666; margin: 0;" data-es="Federación Mexicana de Tiro. Estándares y reglamentos técnicos para competencias de tiro deportivo con rifles neumáticos." data-en="Mexican Shooting Federation. Standards and technical regulations for sport shooting competitions with pneumatic rifles.">Federación Mexicana de Tiro. Estándares y reglamentos técnicos para competencias de tiro deportivo con rifles neumáticos.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px; padding: 15px; background: rgba(40, 167, 69, 0.1); border-radius: 8px;">
+                <p style="margin: 0; font-size: 13px; color: #155724;" data-es="💡 <strong>Nota:</strong> Los pesos mostrados corresponden a pellets diábolo típicos. Para munición específica, siempre consulte las especificaciones del fabricante." data-en="💡 <strong>Note:</strong> The weights shown correspond to typical diabolo pellets. For specific ammunition, always consult manufacturer specifications.">💡 <strong data-es="Nota:" data-en="Note:">Nota:</strong> <span data-es="Los pesos mostrados corresponden a pellets diábolo típicos. Para munición específica, siempre consulte las especificaciones del fabricante." data-en="The weights shown correspond to typical diabolo pellets. For specific ammunition, always consult manufacturer specifications.">Los pesos mostrados corresponden a pellets diábolo típicos. Para munición específica, siempre consulte las especificaciones del fabricante.</span></p>
+            </div>
         </div>
     </div>
 
@@ -735,7 +808,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Club de Caza, Tiro y Pesca de Yucatán, AC</h3>
-                <p>Asociación Civil dedicada a promover el tiro deportivo y la caza responsable de manera ética y conforme a la legislación vigente.</p>
+                <p data-es="Asociación Civil dedicada a promover el tiro deportivo y la caza responsable de manera ética y conforme a la legislación vigente." data-en="Civil Association dedicated to promoting sport shooting and responsible hunting in an ethical manner and in accordance with current legislation.">Asociación Civil dedicada a promover el tiro deportivo y la caza responsable de manera ética y conforme a la legislación vigente.</p>
                 
                 <div class="branding-logos">
                     <img src="{{ url_for('static', filename='femeti-logo.avif') }}" alt="FEMETI - Federación Mexicana de Tiro" class="logo-secondary">
@@ -743,7 +816,7 @@
             </div>
             
             <div class="footer-section">
-                <h4>Contacto</h4>
+                <h4 data-es="Contacto" data-en="Contact">Contacto</h4>
                 <div class="contact-info">
                     <a href="https://wa.me/525665824667" class="whatsapp-link" target="_blank">
                         <span>📱</span>
@@ -751,19 +824,19 @@
                     </a>
                     <a href="https://www.facebook.com/profile.php?id=61554753867361" class="facebook-link" target="_blank">
                         <span>📘</span>
-                        Síguenos en Facebook
+                        <span data-es="Síguenos en Facebook" data-en="Follow us on Facebook">Síguenos en Facebook</span>
                     </a>
                 </div>
             </div>
             
             <div class="footer-section">
-                <h4>📋 Marco Legal</h4>
-                <p class="disclaimer">
-                    <strong>Fundamento Legal:</strong> Ley Federal de Armas de Fuego y Explosivos (LFAFE)<br>
-                    <strong>Artículo 16:</strong> Establece el límite de 140 joules para rifles de aire<br>
-                    <strong>Autoridad Competente:</strong> SEDENA (Secretaría de la Defensa Nacional)<br><br>
-                    <strong>Por encima de 140J:</strong> Requiere registro y permiso extraordinario de transportación emitido por SEDENA<br>
-                    <strong>Por debajo de 140J:</strong> Uso libre para tiro deportivo y caza responsable
+                <h4 data-es="📋 Marco Legal" data-en="📋 Legal Framework">📋 Marco Legal</h4>
+                <p class="disclaimer" data-es="Fundamento Legal: Ley Federal de Armas de Fuego y Explosivos (LFAFE)<br>Artículo 16: Establece el límite de 140 joules para rifles de aire<br>Autoridad Competente: SEDENA (Secretaría de la Defensa Nacional)<br><br>Por encima de 140J: Requiere registro y permiso extraordinario de transportación emitido por SEDENA<br>Por debajo de 140J: Uso libre para tiro deportivo y caza responsable" data-en="Legal Foundation: Federal Law of Firearms and Explosives (LFAFE)<br>Article 16: Establishes the 140 joules limit for airguns<br>Competent Authority: SEDENA (National Defense Secretariat)<br><br>Above 140J: Requires registration and extraordinary transportation permit issued by SEDENA<br>Below 140J: Free use for sport shooting and responsible hunting">
+                    <strong data-es="Fundamento Legal:" data-en="Legal Foundation:">Fundamento Legal:</strong> <span data-es="Ley Federal de Armas de Fuego y Explosivos (LFAFE)" data-en="Federal Law of Firearms and Explosives (LFAFE)">Ley Federal de Armas de Fuego y Explosivos (LFAFE)</span><br>
+                    <strong data-es="Artículo 16:" data-en="Article 16:">Artículo 16:</strong> <span data-es="Establece el límite de 140 joules para rifles de aire" data-en="Establishes the 140 joules limit for airguns">Establece el límite de 140 joules para rifles de aire</span><br>
+                    <strong data-es="Autoridad Competente:" data-en="Competent Authority:">Autoridad Competente:</strong> <span data-es="SEDENA (Secretaría de la Defensa Nacional)" data-en="SEDENA (National Defense Secretariat)">SEDENA (Secretaría de la Defensa Nacional)</span><br><br>
+                    <strong data-es="Por encima de 140J:" data-en="Above 140J:">Por encima de 140J:</strong> <span data-es="Requiere registro y permiso extraordinario de transportación emitido por SEDENA" data-en="Requires registration and extraordinary transportation permit issued by SEDENA">Requiere registro y permiso extraordinario de transportación emitido por SEDENA</span><br>
+                    <strong data-es="Por debajo de 140J:" data-en="Below 140J:">Por debajo de 140J:</strong> <span data-es="Uso libre para tiro deportivo y caza responsable" data-en="Free use for sport shooting and responsible hunting">Uso libre para tiro deportivo y caza responsable</span>
                 </p>
             </div>
         </div>
@@ -957,6 +1030,139 @@
                 tablaContainer.style.display = 'none';
             }
         }
+
+        // SISTEMA BILINGÜE
+        let currentLanguage = localStorage.getItem('language') || 'es';
+
+        // Traducciones para mensajes dinámicos
+        const translations = {
+            es: {
+                'complete_fields': 'Por favor, complete todos los campos',
+                'calculate_error': 'Error al calcular. Intente nuevamente.',
+                'data_entered': '📊 Datos ingresados:',
+                'projectile_weight': 'Peso del proyectil:',
+                'rifle_velocity': 'Velocidad del rifle:',
+                'calculated_energy': '⚡ Energía calculada:',
+                'difference': '📋 Diferencia:',
+                'grains': 'granos',
+                'joules': 'joules',
+                'caliber_selected': 'Calibre seleccionado:',
+                'clear_selection': 'Limpiar selección',
+                'legal_limit_velocity': '💡 Velocidad límite legal:',
+                'legal_limit_for': '💡 Velocidad límite para',
+                'stay_below': 'Mantente por debajo para NO requerir registro',
+                'typical_weight': 'Peso típico precargado',
+                'adjust_value': 'Puedes ajustar este valor según tu munición específica',
+                'high_power_caliber': '⚠️ CALIBRE DE ALTA POTENCIA: Muy fácil exceder 140J',
+                'caution_caliber': '🔶 PRECAUCIÓN: Moderadamente fácil exceder 140J',
+                'careful_caliber': '🟡 CUIDADO: Posible exceder 140J con rifles potentes',
+                'safe_caliber': '✅ CALIBRE SEGURO: Difícil exceder 140J con rifles típicos'
+            },
+            en: {
+                'complete_fields': 'Please complete all fields',
+                'calculate_error': 'Error calculating. Please try again.',
+                'data_entered': '📊 Data entered:',
+                'projectile_weight': 'Projectile weight:',
+                'rifle_velocity': 'Rifle velocity:',
+                'calculated_energy': '⚡ Calculated energy:',
+                'difference': '📋 Difference:',
+                'grains': 'grains',
+                'joules': 'joules',
+                'caliber_selected': 'Caliber selected:',
+                'clear_selection': 'Clear selection',
+                'legal_limit_velocity': '💡 Legal limit velocity:',
+                'legal_limit_for': '💡 Velocity limit for',
+                'stay_below': 'Stay below to NOT require registration',
+                'typical_weight': 'Typical weight preloaded',
+                'adjust_value': 'You can adjust this value according to your specific ammunition',
+                'high_power_caliber': '⚠️ HIGH POWER CALIBER: Very easy to exceed 140J',
+                'caution_caliber': '🔶 CAUTION: Moderately easy to exceed 140J',
+                'careful_caliber': '🟡 CAREFUL: Possible to exceed 140J with powerful rifles',
+                'safe_caliber': '✅ SAFE CALIBER: Difficult to exceed 140J with typical rifles'
+            }
+        };
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            
+            // Actualizar indicador visual
+            document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            
+            // Actualizar todos los elementos con traducciones
+            document.querySelectorAll('[data-es], [data-en]').forEach(element => {
+                const text = element.getAttribute(`data-${lang}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+
+            // Actualizar placeholders de inputs
+            document.querySelectorAll('[data-placeholder-es], [data-placeholder-en]').forEach(input => {
+                const placeholder = input.getAttribute(`data-placeholder-${lang}`);
+                if (placeholder) {
+                    input.placeholder = placeholder;
+                }
+            });
+
+            // Actualizar título de la página
+            const titles = {
+                es: 'Calculadora de Energía PCP - Club de Caza, Tiro y Pesca de Yucatán',
+                en: 'PCP Energy Calculator - Hunting, Shooting and Fishing Club of Yucatán'
+            };
+            document.title = titles[lang];
+        }
+
+        // Inicializar idioma al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage(currentLanguage);
+            
+            // Configurar evento del toggle
+            document.getElementById('lang-toggle').addEventListener('click', function() {
+                switchLanguage(currentLanguage === 'es' ? 'en' : 'es');
+            });
+        });
+
+        // Actualizar funciones existentes para usar traducciones
+        function mostrarError(mensaje) {
+            const errorDiv = document.getElementById('error-message');
+            const resultadoDiv = document.getElementById('resultado');
+            
+            resultadoDiv.style.display = 'none';
+            
+            // Usar traducción si es un mensaje predefinido
+            const translatedMessage = translations[currentLanguage][mensaje] || mensaje;
+            errorDiv.textContent = translatedMessage;
+            errorDiv.style.display = 'block';
+        }
+
+        // Actualizar mostrarResultado para usar traducciones
+        const originalMostrarResultado = mostrarResultado;
+        mostrarResultado = function(data) {
+            const resultadoDiv = document.getElementById('resultado');
+            const errorDiv = document.getElementById('error-message');
+            
+            errorDiv.style.display = 'none';
+            
+            const pesoIngresado = document.getElementById('peso').value;
+            const velocidadIngresada = document.getElementById('velocidad').value;
+            
+            const t = translations[currentLanguage];
+            
+            resultadoDiv.className = 'resultado ' + (data.requiere_registro ? 'ilegal' : 'legal');
+            resultadoDiv.innerHTML = `
+                <h3>${data.mensaje}</h3>
+                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.2); border-radius: 8px; border-left: 4px solid rgba(255,255,255,0.5);">
+                    <p style="margin: 5px 0;"><strong>${t.data_entered}</strong></p>
+                    <p style="margin: 5px 0;">• ${t.projectile_weight} <strong>${pesoIngresado} ${t.grains}</strong></p>
+                    <p style="margin: 5px 0;">• ${t.rifle_velocity} <strong>${velocidadIngresada} fps</strong></p>
+                </div>
+                <p><strong>${t.calculated_energy}</strong> ${data.energia} ${t.joules}</p>
+                <p><strong>${t.difference}</strong> ${data.detalle}</p>
+            `;
+            resultadoDiv.style.display = 'block';
+        };
     </script>
 </body>
 </html>
